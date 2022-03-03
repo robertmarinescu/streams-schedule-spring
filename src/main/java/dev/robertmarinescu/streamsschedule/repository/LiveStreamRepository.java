@@ -2,6 +2,8 @@ package dev.robertmarinescu.streamsschedule.repository;
 
 import dev.robertmarinescu.streamsschedule.model.LiveStream;
 import org.apache.tomcat.jni.Local;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-
+@Repository
 public class LiveStreamRepository {
 
     List <LiveStream> streams = new ArrayList<>();
