@@ -13,7 +13,6 @@ import java.util.List;
 @RequestMapping("/streams")
 public class LiveStreamController {
 
-    @Autowired
     private final LiveStreamRepository repository;
 
     public LiveStreamController(LiveStreamRepository repository){
