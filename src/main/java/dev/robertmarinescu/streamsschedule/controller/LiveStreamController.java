@@ -3,10 +3,8 @@ package dev.robertmarinescu.streamsschedule.controller;
 import dev.robertmarinescu.streamsschedule.model.LiveStream;
 import dev.robertmarinescu.streamsschedule.repository.LiveStreamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,5 +26,23 @@ public class LiveStreamController {
     @GetMapping("/{id}")
     public LiveStream findById(@PathVariable String id){
         return repository.findById(id);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping
+    public LiveStream create(@RequestBody LiveStream stream) {
+        return repository.create(stream);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PutMapping("/{id}")
+    public void update(@RequestBody LiveStream stream, @PathVariable String id) {
+        repository.update(stream, id);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable String id) {
+        repository.delete(id);
     }
 }
